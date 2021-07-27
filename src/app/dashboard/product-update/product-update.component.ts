@@ -104,7 +104,6 @@ export class ProductUpdateComponent implements OnInit {
           } else {
             _this.router.navigate(['/dashboard']);
           }
-          location.reload();
         } else {
           _this.error = true;
         }
