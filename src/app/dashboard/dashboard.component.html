@@ -1,0 +1,74 @@
+<div class="main">
+  <div class="container">
+
+    <div class="service-sec" id="products">
+        <div class="row">
+          <div class="card-body text-center">
+            <h4 class="card-title text-white">Category List</h4>
+            <p class="card-text text-white">With supporting text below as a natural lead-in to additional content.</p>
+            <!--<button  type="button" class="btn btn-success mb-3" [routerLink]="['/dashboard/product-update']">New Product</button>-->
+            <button type="button" class="btn btn-danger mb-3 pull-right ml-5" (click)="logout()">Logout</button>
+            <button type="button" class="btn btn-info pull-right " [routerLink]="['/']">Home Page</button>
+          </div>
+          <ul class="cards">
+            <li class="card pointer" *ngFor="let item of category; let i = index;" [routerLink]="['/dashboard/category',item.objectID]">
+              <div class="card__inner">
+                <img class="products" [src]="item.Image?item.Image:'https://png.pngtree.com/png-vector/20190322/ourmid/pngtree-coming-soon-vector-template-design-illustration-png-image_859656.jpg'">
+              </div>
+              <h5 class="card__tagline mt-2">{{item.name}}</h5>
+            </li>
+            <li class="card pointer" [routerLink]="['/dashboard/category-update',null,id]">
+              <div class="card__inner">
+                <img class="products" [src]="'../../assets/images/plus.png'">
+              </div>
+              <h5 class="card__tagline mt-2 text-info">Add Category</h5>
+            </li>
+            <li class="card pointer" [routerLink]="['/dashboard/product-update',null,id]">
+              <div class="card__inner">
+                <img class="products" [src]="'../../assets/images/plus.png'">
+              </div>
+              <h5 class="card__tagline mt-2 text-info">Add Products</h5>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+  <div class="card-body text-center" *ngIf="products.length">
+    <h4 class="card-title text-white">Product Listt</h4>
+    <p class="card-text text-white">With supporting text below as a natural lead-in to additional content.</p>
+  </div>
+    <div class="card table-responsive mb-4 width-100" *ngIf="products.length">
+    <table class="table table-hover table-bordered table-striped ">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">Edit List </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let item of products; let i = index;">
+        <th scope="row">{{i+1}}</th> 
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.description}}</td>
+        <td><img class="width-50" src="{{item.Image}}" *ngIf="item.Image"></td>
+        <td>
+          <a class="btn btn-sm btn-primary m-2" [routerLink]="['/dashboard/product-update',item.objectID,id]">Edit</a>
+          <a class="btn btn-sm btn-danger m-2" (click)="deleteProduct(item)">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+
+
+
+

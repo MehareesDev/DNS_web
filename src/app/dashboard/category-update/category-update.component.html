@@ -1,0 +1,65 @@
+<section class="update-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 login-sec">
+        <h2 class="text-center">Category Details</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <form [formGroup]="categoryForm">
+              <div class="form-group">
+                <label class="text-uppercase">Category Name</label>
+                <input type="email" formControlName="name"
+                       [ngClass]="{ 'is-invalid': submitted &&  form.name.errors }" placeholder="Enter category name"
+                       class="form-control"/>
+                <div class="invalid-feedback">
+                  Please provide a valid information.
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label class="text-uppercase">parent</label>
+                <select class="form-control" formControlName="parent">
+                  <option *ngFor="let item of category" [value]="item.objectID">{{item.name}}</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid information.
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label class="text-uppercase">Description</label>
+                <textarea type="text" [ngClass]="{ 'is-invalid': submitted &&  form.description.errors }"
+                          formControlName="description" placeholder="Enter category details"
+                          class="form-control"></textarea>
+                <div class="invalid-feedback">
+                  Please provide a valid information.
+                </div>
+              </div>
+              <div class="form-group mt-3 text-center">
+                <button class=" btn btn-danger text-white" (click)="submit()" [disabled]="loading">
+                  Update
+                  <span class="spinner-border spinner-border-sm" *ngIf="loading" role="status"
+                        aria-hidden="true"></span>
+                </button>
+                <button class="btn btn-warning text-white m-2" [routerLink]="['/dashboard/']" *ngIf="!parentCategoryId">
+                  Back
+                </button>
+                <button class="btn btn-warning text-white m-2" [routerLink]="['/dashboard/category/',parentCategoryId]" *ngIf="parentCategoryId">
+                  Back
+                </button>
+              </div>
+              <div class="text-danger text-center" *ngIf="error">
+                Something went wrong
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <input type="file" class="custom-file-container__custom-file__custom-file-input" id="myfile"
+                   accept="image/*" multiple (change)="fileChangeEvent($event)">
+            <img class="width-40"
+                 [src]="imgBase64Path || UploadedImage?imgBase64Path?imgBase64Path:UploadedImage:'https://static.thenounproject.com/png/469473-200.png'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

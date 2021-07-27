@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand mx-auto" href="#"><span>DNS</span></a>
+    <div class="collapse navbar-collapse" id="navbarCollapse1">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"> <a class="nav-link" href="#myCarousel">Home</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#products">Products</a> </li>
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/login']" *ngIf="!login">Admin Login</a> </li>
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/dashboard']" *ngIf="login">Dashboard</a> </li>
+        <li class="nav-item"> <a class="nav-link" (click)="logout()" *ngIf="login">Logout</a> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Swiper Silder
+    ================================================== -->
+<!-- Slider main container -->
+<div class="swiper-container main-slider" id="myCarousel">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide slider-bg-position" style="background:url('../../assets/images/banner.jpg')" data-hash="slide1">
+      <h2>It is health that is real wealth and not pieces of gold and silver</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Benefits
+    ================================================== -->
+<section class="service-sec" id="products">
+  <div class="container">
+    <div class="row">
+      <ul class="cards">
+        <li class="card" *ngFor="let item of products; let i = index;">
+          <div class="card__inner">
+            <img class="products" [src]="item.Image?item.Image:'https://png.pngtree.com/png-vector/20190322/ourmid/pngtree-coming-soon-vector-template-design-illustration-png-image_859656.jpg'">
+            <div class="card__buttons">
+              <a>Explore</a>
+              <a>Shop</a>
+            </div>
+          </div>
+          <h5 class="card__tagline mt-2">{{item.name}}</h5>
+          <div>
+            <img class="rating" src="../../assets/images/rating.png">
+          </div>
+          <p>${{item.price}}</p>
+        </li>
+      </ul>
+   </div>
+    <!-- /.row -->
+  </div>
+</section>
+
+

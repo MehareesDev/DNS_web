@@ -1,0 +1,40 @@
+.main{
+  background-image:url(../../assets/images/banner.jpg);
+  background-repeat:no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+}
+
+footer{
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.bg__card__navbar{
+  background-color: #000000;
+}
+.bg__card__footer{
+  background-color: #000000 !important;
+}
+#add__new__list{
+  top: -38px;
+  right: 0px;
+}
+.width-50{
+  width: 50px
+}
+.pull-right{
+  float: right;
+}
+.container{
+  padding-bottom: 100px;
+}
+.ml-5{
+  margin-left: 5px;
+}
+.width-100{
+  width: 100% !important;
+}
+.pointer{
+  cursor: pointer;
+}
